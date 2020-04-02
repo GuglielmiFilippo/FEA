@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>com.namirial.android</groupId>
+  <artifactId>supportlibrary_cv4</artifactId>
+  <version>28.2</version>
+  <packaging>aar</packaging>
+  <inceptionYear>2019</inceptionYear>
+  <dependencies>
+    <dependency>
+      <groupId>androidx.core</groupId>
+      <artifactId>core</artifactId>
+      <version>1.0.1</version>
+      <source>repo</source>
+    </dependency>
+    <dependency>
+      <groupId>androidx.legacy</groupId>
+      <artifactId>legacy-support-core-utils</artifactId>
+      <version>1.0.0</version>
+      <source>repo</source>
+    </dependency>
+    <dependency>
+      <groupId>androidx.legacy</groupId>
+      <artifactId>legacy-support-core-ui</artifactId>
+      <version>1.0.0</version>
+      <source>repo</source>
+    </dependency>
+    <dependency>
+      <groupId>androidx.media</groupId>
+      <artifactId>media</artifactId>
+      <version>1.0.1</version>
+      <source>repo</source>
+    </dependency>
+    <dependency>
+      <groupId>androidx.fragment</groupId>
+      <artifactId>fragment</artifactId>
+      <version>1.0.0</version>
+      <source>repo</source>
+    </dependency>
+  </dependencies>
+</project>

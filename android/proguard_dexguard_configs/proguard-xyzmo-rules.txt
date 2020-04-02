@@ -1,0 +1,109 @@
+# all xyzmo specific proguard compatible rules
+# all xyzmo specific dexguard compatible rules are in dexguard-xyzmo-rules.txt
+
+
+# xyzmo classes
+# neuer "includecode" keep-modifier sollte bei schon  optimized oder obfuscated classes benutzt werden.
+# also dann wenn ein SDK user mit unserer classes.jar eine apk baut.
+# das würde aber bedeuten, daß wir 2 proguard-xyzmo-rules.txt brauchen, eine zum erzeugen von classes jar, und eine zum erzeugen der apk....
+-keep,allowobfuscation class
+
+    com.xyzmo.enrollment.refimpl.**,
+    com.xyzmo.significantesaw.**,
+    com.xyzmo.client.**,
+    com.xyzmo.sdkdemo.**,
+    com.xyzmo.enrollment_sdkdemo.**,
+    com.xyzmo.enrollment_sdkexternaldemo.**,
+    com.xyzmo.enrollment_sdkstart.**,
+    com.xyzmo.sdkexternaldemo.**,
+    com.xyzmo.sdkparentdemo.**,
+    com.xyzmo.signonphone.sdkstart.**,
+    com.xyzmo.standalone.sdkdemo.**,
+    com.xyzmo.standalone.sdkstart.**,
+    com.xyzmo.sdkdemo.**,
+    com.xyzmo.signonphone.**,
+    com.xyzmo.standalone.**,
+    com.xyzmo.sdkstart.**,
+
+	com.xyzmo.biometric.**,
+	com.xyzmo.changelog.**,
+	com.xyzmo.enrollment.**,
+	com.xyzmo.handler.**,
+	com.xyzmo.helper.**,
+	com.xyzmo.identifier.**,
+	com.xyzmo.inapp.**,
+	com.xyzmo.kiosk.**,
+	com.xyzmo.pdf.**,
+	com.xyzmo.productusage.**,
+	com.xyzmo.signature.**,
+	com.xyzmo.template.**,
+	com.xyzmo.ui.**,
+	com.xyzmo.utilities.**,
+	com.xyzmo.webservice.**
+        { *; }
+
+-keep class 
+	exceptions.**,
+	com.xyzmo.sdk.**,
+	com.xyzmo.enums.**,
+	com.xyzmo.crypto.**,
+	com.xyzmo.handler.FileHandler,
+	com.xyzmo.handler.LockPatternHandler,
+	com.xyzmo.helper.AppContext,
+	com.xyzmo.helper.CheckString,
+	com.xyzmo.helper.XmlHandling,
+	com.xyzmo.identifier.StaticIdentifier,
+	com.xyzmo.preference.**,
+	com.xyzmo.productusage.DeviceUuidFactory,
+	com.xyzmo.signature.HashBinding,
+	com.xyzmo.licensing.**,
+	com.xyzmo.signonphone.**,
+	com.xyzmo.ui.SOPDesktopActivity,
+	com.xyzmo.workstepcontroller.**
+	{ *; }
+	
+-keep interface com.xyzmo.sdk.**   { *; }
+
+
+# Do not obfuscate Parcelling Code
+-keepclassmembers class * implements android.os.Parcelable 
+{
+    static android.os.Parcelable$Creator CREATOR;
+    <init>(android.os.Parcel);
+    int describeContents();
+    void writeToParcel(android.os.Parcel, int);
+}
+
+# Do not obfuscate Serialization Code
+-keepnames class * implements java.io.Serializable
+-keepclassmembers class * implements java.io.Serializable 
+{
+    static final long serialVersionUID;
+    private static final java.io.ObjectStreamField[] serialPersistentFields;
+    !static !transient <fields>;
+    private void writeObject(java.io.ObjectOutputStream);
+    private void readObject(java.io.ObjectInputStream);
+    java.lang.Object writeReplace();
+    java.lang.Object readResolve();
+}
+
+
+# Remove Calls to Debugging Code
+-assumenosideeffects class com.xyzmo.helper.XmlHandling
+{
+    public static void stringToXmlFileWithFileName(java.lang.String, java.lang.String, java.lang.String);
+    public static void elementToXmlFileWithFileName(org.jdom2.Element, java.lang.String, java.lang.String);
+}
+
+
+# Remove Logging Code
+-assumenosideeffects class android.util.Log 
+{
+    public static boolean isLoggable(java.lang.String, int);
+    public static int v(...);
+#   public static int d(...);
+#   public static int i(...);
+#   public static int w(...);
+#   public static int e(...);
+    public static java.lang.String getStackTraceString(java.lang.Throwable);
+}

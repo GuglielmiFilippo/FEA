@@ -1,0 +1,19 @@
+# ------------------- TEST DEPENDENCIES -------------------
+
+-dontwarn org.hamcrest.**
+-dontwarn android.test.**
+-dontwarn android.support.test.**
+-dontwarn androidx.test.**
+-dontwarn javax.lang.model.**
+-dontwarn org.junit.**
+-dontwarn junit.**
+-dontwarn sun.misc.**
+
+-keep class org.hamcrest.** { *; }
+-keep class org.junit.** { *; }
+-keep class javax.lang.model.** { *; }
+-keep class junit.** { *; }
+-keep class sun.misc.** { *; }
+
+
+

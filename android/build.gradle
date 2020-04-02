@@ -1,0 +1,55 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    ext {
+        buildToolsVersion = "28.0.3"
+        minSdkVersion = 16
+        compileSdkVersion = 28
+        targetSdkVersion = 28
+    }
+    repositories {
+        google()
+        jcenter()
+    }
+    dependencies {
+        classpath("com.android.tools.build:gradle:3.5.2")
+
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+    }
+}
+
+allprojects {
+    repositories {
+        mavenLocal()
+        maven {
+            // All of React Native (JS, Obj-C sources, Android binaries) is installed from npm
+            url("$rootDir/../node_modules/react-native/android")
+        }
+        maven {
+            // Android JSC is installed from npm
+            url("$rootDir/../node_modules/jsc-android/dist")
+        }
+
+        google()
+        //jcenter()
+
+        jcenter()
+        mavenCentral()
+        maven { url 'https://haibison.bitbucket.io/maven-repos' }
+        maven { url 'https://mvnrepository.com/artifact/com.google.zxing' }
+        maven { url 'https://mvnrepository.com/artifact/org.jdom/jdom2' }
+        maven { url 'https://mvnrepository.com/artifact/jaxen/jaxen' }
+        maven { url 'https://mvnrepository.com/artifact/com.madgag.spongycastle/pkix' }
+        maven { url 'https://mvnrepository.com/artifact/org.onepf/openiab' }
+        maven { url 'https://mvnrepository.com/artifact/com.drewnoakes/metadata-extractor' }
+        maven { url 'https://mvnrepository.com/artifact/org.apache.commons/commons-lang3' }
+        maven { url 'http://repo.jenkins-ci.org/releases' }
+        maven { url 'https://maven.google.com' } //Gradle 3.x tools need to be retrieved from here as well
+        flatDir {
+            dirs '../aar'
+        }
+
+        maven { url 'https://www.jitpack.io' }
+    }
+}

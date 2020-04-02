@@ -1,0 +1,7 @@
+# Dexguard only settings, which proguard can`t handle are in dexguard-xyzmo-rules.txt
+# all other combo settings are in proguard-project.txt
+
+-include dexguard-xyzmo-rules.txt
+
+# proguard-project.txt includes proguard-xyzmo-rules.txt
+-include proguard-project.txt

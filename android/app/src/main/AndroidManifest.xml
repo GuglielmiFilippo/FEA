@@ -1,0 +1,93 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.smartsign">
+
+    <!-- Normal permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="com.android.email.permission.READ_ATTACHMENT" />
+    <uses-permission android:name="com.google.android.gm.permission.READ_GMAIL" />
+    <uses-permission android:name="com.google.android.gm.permission.READ_CONTENT_PROVIDER" />
+    <uses-permission android:name="com.google.android.providers.gmail.permission.READ_GMAIL" />
+    <uses-permission android:name="android.permission.ACCESS_ALL_DOWNLOADS" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+
+    <!-- Dangerous permissions -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" android:maxSdkVersion="28" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <!-- .MainApplication -> androidx.multidex.MultiDexApplication -->
+    <application
+        android:name="androidx.multidex.MultiDexApplication"
+        android:allowTaskReparenting="true"
+        android:hardwareAccelerated="true"
+        android:icon="@mipmap/ic_launcher"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:resizeableActivity="true"
+        android:supportsPictureInPicture="false"
+        tools:replace="android:icon,android:roundIcon,android:label,android:theme, android:name">
+      <activity
+        android:name=".MainActivity"
+        android:label="@string/app_name"
+        android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+        android:launchMode="singleTask"
+        android:windowSoftInputMode="adjustResize">
+        <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter>
+      </activity>
+      <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" />
+
+        <activity
+            android:name="com.xyzmo.ui.DocumentImage"
+            android:alwaysRetainTaskState="true"
+            android:label="@string/significant_app_name"
+            android:launchMode="singleTask"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.xyzmo.ui.CaptureSignature"
+            android:label="@string/significant_app_name"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.xyzmo.ui.AndroidExplorer"
+            android:label="@string/explorer"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.xyzmo.ui.MainSettingsActivity"
+            android:label="@string/title_activity_main_settings"
+            android:logo="@mipmap/icon">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.xyzmo.ui.DocumentImage" />
+        </activity>
+
+        <activity
+            android:name="com.xyzmo.ui.SIGNificantLockpatternActivity"
+            android:theme="@style/Significant.Lockpattern.Theme"
+            tools:replace="android:theme"
+            android:label="@string/xyzmo_lockpattern_titlebar" >
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.xyzmo.ui.DocumentImage" />
+        </activity>
+
+        <activity
+            android:name="com.xyzmo.kiosk.ui.AdvertisementActivity"
+            android:theme="@android:style/Theme.Holo.Dialog"></activity>
+
+        <activity
+            android:name="com.xyzmo.ui.AboutActivity"
+            android:theme="@style/SIGNificant_AboutTheme"></activity>
+    </application>
+
+</manifest>

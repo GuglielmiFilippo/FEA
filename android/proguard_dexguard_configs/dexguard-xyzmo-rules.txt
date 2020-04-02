@@ -1,0 +1,24 @@
+# Dexguard only settings, which proguard can`t handle
+
+
+-encryptstrings "AES", "*CBC*", "PKCS7", "OAEP", "BC", "X.509", "PKCS#1",
+                "RSA*", "SHA*", "Sha*", "MD*", "Md*",
+                "http*", "*_Data", "32characterslongstring*",
+                "mKey**", "ehschowissen**", "sDefaultLifetime",
+                "sFilename", "sFolder", mKeyB64, üopwe,
+                bn7t__, newline, mCertificatePassword,
+                pdfnet
+
+
+# xyzmo
+#-encryptclasses com.xyzmo.crypto.Helper
+
+-encryptstrings class com.xyzmo.licensing.ProductLicense
+-encryptstrings class com.xyzmo.inapp.WorkstepCounter
+-encryptstrings class com.xyzmo.crypto.Helper
+-encryptstrings class com.xyzmo.handler.SignHandler
+-encryptstrings class com.xyzmo.pdf.PdfConstants
+
+#-obfuscatecode class com.xyzmo.licensing.ProductLicense
+#-obfuscatecode class com.xyzmo.inapp.WorkstepCounter
+#-obfuscatecode class com.xyzmo.crypto.Helper
